@@ -42,7 +42,11 @@ class Member extends Extension
     {
         parent::routes(function ($router) {
             /* @var \Illuminate\Routing\Router $router */
-            $router->resource('member', 'GG\Admin\Member\MemberController');
+            $router->resource('useradmin/member', 'GG\Admin\Member\Controllers\MemberController');
+            $router->resource('useradmin/permissions', 'GG\Admin\Member\Controllers\PermissionController');
+            $router->resource('useradmin/roles', 'GG\Admin\Member\Controllers\RoleController');
+            $router->resource('useradmin/menu', 'GG\Admin\Member\Controllers\MenuController');
+
         });
     }
 
@@ -51,7 +55,7 @@ class Member extends Extension
      */
     public static function import()
     {
-        parent::createMenu('Member', 'config', 'fa-user');
+        parent::createMenu('Member', 'member', 'fa-user');
 
         parent::createPermission('Admin Member', 'ext.member', 'member*');
     }
